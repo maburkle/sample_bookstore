@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="row">
+		<h1>Online Bookstore</h1>
+	</div>
+
+	<%= form_tag("/search", method: "get") do %>
+		<div class="row">
+			<div class="form-group">
+  			<%= text_field_tag :query, nil, placeholder: "Enter Author Name, Book Title, or Publisher", class: "col-sm-12" %>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 10px;">
+			<div class="form-group">
+				<div class="col-sm-3" style="padding-left: 0;">
+		  		<%= label_tag "Match Title Only?" %>
+		 			<%= check_box_tag(:title_only) %>
+		 		</div>
+
+		 		<div class="col-sm-3">
+		 			<%= label_tag "Format" %>
+		  		<%= select_tag :format_type, options_from_collection_for_select(@formats, :id, :name), prompt: "Select Format"  %>
+		  	</div>
+
+		  	<div class="col-sm-3">
+		 			<%= label_tag "Physical Copy Available?" %>
+		  		<%= check_box_tag(:physical) %>
+		 		</div>
+
+		 		<div class="col-sm-3">
+		 			<%= submit_tag "Search", class: "btn btn-success" %>
+		 		</div>
+		 	</div>
+		</div>
+	<% end %>
+
+	<%= render partial: "search/results" %>
+</div>

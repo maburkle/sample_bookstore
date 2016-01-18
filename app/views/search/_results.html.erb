@@ -1,0 +1,13 @@
+<% if @results.present? %>
+	<h3> Results </h3>
+
+	<% @results.each do |result| %>
+		<div class="row">
+			<label>Title: </label>    <%= result.title %>,
+			<label>Author: </label>   <%= result.author_name %>,
+			<label>Publisher: </label>   <%= result.publisher.name %>,
+			<label>Average Rating: </label>     <%= result.average_rating %>
+		</div>
+	<% end %>
+
+<% end %>
